@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        .about-hero { padding: 140px 1rem 40px; text-align: center; }
+        .about-hero { padding: 170px 1rem 40px; text-align: center; }
         .about-hero h1 { font-size: 2.2rem; color: var(--dark); }
         .about-hero p { max-width: 800px; margin: 0.75rem auto 0; color: var(--dark); opacity: 0.8; }
 
@@ -28,7 +28,25 @@
 
         @media (max-width: 768px) {
             .about-grid, .split-grid { grid-template-columns: 1fr; }
+            .about-hero { padding-top: 140px; padding-bottom: 24px; }
+            .about-hero h1 { font-size: 1.9rem; }
+            .about-hero p { font-size: 0.98rem; }
+
+            .about-grid, .split-grid { gap: 1rem; }
+            .about-card, .contact-block, .feedback-block { padding: 1rem; border-radius: 10px; }
+            .about-card p, .about-card li { font-size: 0.98rem; }
+            .map-container { height: 240px !important; }
+            .feedback-form .rating-row { flex-wrap: wrap; justify-content: center; }
+            .feedback-form .rating-btn { min-width: 64px; text-align: center; }
+            .feedback-form .submit-btn, .contact-form .submit-btn { min-height: 44px; }
+        }
+
+        @media (max-width: 480px) {
             .about-hero { padding-top: 120px; }
+            .about-hero h1 { font-size: 1.6rem; }
+            .about-hero p { font-size: 0.94rem; }
+            .map-container { height: 220px !important; }
+            .feedback-form .rating-btn { min-width: 56px; padding: 0.45rem 0.6rem; }
         }
 
         /* Hamburger Menu Styles (match other pages) */
@@ -42,7 +60,7 @@
             border: none;
             cursor: pointer;
             padding: 0;
-            z-index: 1000;
+            z-index: 1002;
         }
 
         .hamburger-menu span {
@@ -59,11 +77,11 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: var(--white);
+            background-color: #f8f9fb;
             padding: 80px 20px 20px;
             flex-direction: column;
             gap: 20px;
-            z-index: 999;
+            z-index: 9999;
             transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
@@ -79,6 +97,8 @@
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            /* Match menu page: flex with space-between */
+            .nav-container { display: flex; justify-content: space-between; align-items: center; }
             .nav-buttons { display: flex; align-items: center; gap: 0.6rem; }
             .hamburger-menu { display: flex; }
             .mobile-menu { display: flex; }
@@ -194,7 +214,7 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p>Chef Paul's Umami Pizza Kitchen</p>
-                <p>Gaborone | Tlokweng</p>
+                <p>Gaborone | Bontleng | Block 9</p>
                 <p>Phone: +267 77 638 172</p>
                 <p>Email: paulnyeku@gmail.com</p>
             </div>
