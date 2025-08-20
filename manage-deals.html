@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Deals - Chef Paul Pizza Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="header-brand">
+                <img src="pics/logo.png" alt="Chef Paul's Umami Pizza Kitchen" class="brand-logo">
+                <h1>Manage Deals</h1>
+            </div>
+            <div class="header-actions">
+                <a href="dashboard.html" class="btn btn-primary">← Back to Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Create Deal -->
+        <section class="create-deal-section">
+            <h2>Create Limited-Time Deal</h2>
+            <form id="createDealForm" class="deal-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="dealTitle">Deal Title</label>
+                        <input type="text" id="dealTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealBadge">Badge</label>
+                        <input type="text" id="dealBadge" placeholder="e.g., Limited, Weekend Only">
+                    </div>
+                    <div class="form-group form-group--full">
+                        <label for="dealDescription">Description</label>
+                        <textarea id="dealDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealPrice">Price (Pula)</label>
+                        <input type="number" id="dealPrice" min="0" step="1" placeholder="e.g., 199">
+                    </div>
+                    <div class="form-group">
+                        <label for="dealOriginalPrice">Original Price (Pula)</label>
+                        <input type="number" id="dealOriginalPrice" min="0" step="1" placeholder="e.g., 299">
+                    </div>
+                    <div class="form-group">
+                        <label for="dealExpiry">Expiry Date</label>
+                        <input type="date" id="dealExpiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dealImage">Image URL</label>
+                        <input type="text" id="dealImage" placeholder="e.g., pics/menu.jpg">
+                    </div>
+                    <div class="form-group form-group--full">
+                        <label for="dealTerms">Terms</label>
+                        <input type="text" id="dealTerms" placeholder="e.g., Valid weekends only">
+                    </div>
+                </div>
+                <div class="deal-form-actions">
+                    <button type="submit" class="btn btn-primary">➕ Add Deal</button>
+                    <span id="dealFormMessage" class="deal-form-message"></span>
+                </div>
+            </form>
+        </section>
+
+        <!-- Custom Deals List -->
+        <section class="custom-deals-section">
+            <h2>Current Custom Deals</h2>
+            <div id="customDealsList" class="custom-deals-list">
+                <!-- Custom deals will be populated here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="manage-deals.js"></script>
+</body>
+</html>

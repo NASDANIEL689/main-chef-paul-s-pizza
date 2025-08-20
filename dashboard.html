@@ -11,7 +11,10 @@
 <body>
     <header class="dashboard-header">
         <div class="header-content">
-            <h1>🍕 Chef Paul Pizza Dashboard</h1>
+            <div class="header-brand">
+                <img src="pics/logo.png" alt="Chef Paul's Umami Pizza Kitchen" class="brand-logo">
+                <h1>Chef Paul's Dashboard</h1>
+            </div>
             <div class="header-actions">
                 <button id="refreshBtn" class="btn btn-primary">🔄 Refresh Orders</button>
                 <button id="testBtn" class="btn btn-primary">🧪 Test Connection</button>
@@ -20,6 +23,21 @@
     </header>
 
     <main class="dashboard-container">
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+                <a href="manage-deals.html" class="action-btn">
+                    <span class="action-icon">🎯</span>
+                    <span class="action-text">Manage Deals</span>
+                </a>
+                <a href="index.html" class="action-btn">
+                    <span class="action-icon">🏠</span>
+                    <span class="action-text">View Site</span>
+                </a>
+            </div>
+        </section>
+
         <!-- Order Statistics -->
         <section class="stats-section">
             <div class="stat-card">

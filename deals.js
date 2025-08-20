@@ -18,8 +18,8 @@ const orderFunctions = {
 
 console.log('Deals.js loaded');
 
-// Deals Data
-const deals = [
+// Deals Data (base)
+const baseDeals = [
     {
         id: 1,
         title: "Family Feast Deal",
@@ -150,8 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear existing content
             dealsGrid.innerHTML = '';
             
-            // Use local deals array
-            console.log('Using local deals:', deals);
+            // Merge base deals with custom deals from localStorage
+            const customDeals = loadCustomDeals();
+            const deals = [...customDeals, ...baseDeals].filter(d => !isExpired(d.expiryDate));
+            console.log('Using deals (custom + base):', deals);
             
             // Populate deals
             deals.forEach(deal => {
@@ -159,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 dealsGrid.appendChild(dealCard);
             });
             console.log('Deals populated');
+            startCountdownTimers();
         } catch (error) {
             console.error('Error loading deals:', error);
             dealsGrid.innerHTML = '<p class="error-message">Error loading deals. Please try again later.</p>';
@@ -203,10 +206,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function displayDeals() {
     dealsGrid.innerHTML = '';
     
+    const customDeals = loadCustomDeals();
+    const deals = [...customDeals, ...baseDeals].filter(d => !isExpired(d.expiryDate));
     deals.forEach(deal => {
         const dealCard = createDealCard(deal);
         dealsGrid.appendChild(dealCard);
     });
+    startCountdownTimers();
 }
 
 // Create Deal Card
@@ -233,8 +239,8 @@ function createDealCard(deal) {
                     <span class="current-price">Special Offer</span>
                 </div>
             `}
-            <div class="deal-timer">
-                <span>Time Left: ${timeLeft}</span>
+            <div class="deal-timer" data-end="${deal.expiryDate}">
+                <span class="countdown">Time Left: ${timeLeft}</span>
             </div>
             <button class="deal-button" onclick="addToCart('${deal.title}', ${deal.price || 0})">
                 Add to Cart
@@ -257,6 +263,15 @@ function getTimeLeft(expiryDate) {
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     
     return `${days}d ${hours}h`;
+}
+
+function isExpired(expiryDate) {
+    return new Date(expiryDate) - new Date() <= 0;
+}
+
+function loadCustomDeals() {
+    try { return JSON.parse(localStorage.getItem('customDeals') || '[]'); }
+    catch { return []; }
 }
 
 // Start Countdown Timers
