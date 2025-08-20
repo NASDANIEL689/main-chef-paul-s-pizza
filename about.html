@@ -106,6 +106,15 @@
             .hamburger-menu.active span:nth-child(2) { opacity: 0; }
             .hamburger-menu.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
         }
+
+        /* About page: make cart button/icon smaller */
+        .nav-buttons .cart-btn { padding: 0.25rem 0.6rem; border-radius: 6px; }
+        .nav-buttons .cart-icon { width: 30px; height: 30px; }
+
+        @media (max-width: 768px) {
+            .nav-buttons .cart-btn { padding: 0; }
+            .nav-buttons .cart-icon { width: 18px; height: 18px; }
+        }
     </style>
 </head>
 <body>
